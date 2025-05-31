@@ -1,0 +1,18 @@
+<p [style-directive]="{'color': 'blue'}" >component-directive works!</p>
+<ul>
+    <li>Mask pattern directive using host binding</li>
+    <div>
+        <select (change)="onChange($event)">
+            <option value="(xxx) xxx-xxxx">USA</option>
+            <option value="7xxx xxxxxx">UK</option>
+            <option value="xxxxx xxxxx">India</option>
+            <option value="x xx xx xx xx">France</option>
+            <option value="1xx xxxxxxx">Germany</option>
+            <option value="4xx xxx xxx">Australia</option>
+            <option value="xx 9xxxx xxxx">Brazil</option>
+            <option value="xx xxx xxxx">South Africa</option>
+            
+        </select>
+        <input type="text" value="1234567890" [mask-directive]="pattern" />
+    </div>
+</ul>
