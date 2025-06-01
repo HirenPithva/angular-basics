@@ -5,13 +5,14 @@ import { TwoWayBindingTechnique } from './two-way-binding/two-way-binding-techni
 import { ComponentDirective } from './directive/component-directive/component-directive';
 import { Parent } from './data-tranfer/parent/parent';
 import { ChangeDetectionCycle } from './change-detection/change-detection-cycle/change-detection-cycle';
+import { RootComponent } from './view-encapsulation/root-component/root-component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   template: "",
   templateUrl:"app.template.html",
-  imports:[TwoWayBindingTechnique, Parent,ChangeDetectionCycle,ComponentDirective]
+  imports:[TwoWayBindingTechnique, Parent,ChangeDetectionCycle, RootComponent,ComponentDirective]
 })
 export class App {
   name = 'Angular';
