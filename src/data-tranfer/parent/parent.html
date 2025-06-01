@@ -1,0 +1,8 @@
+<h6>Parent:</h6>
+<p>send to child:<input [(ngModel)]="data" /></p>
+<p>received from child:{{message}}</p>
+<child #child [data]="data" title="child-1" (sendMessage)="receivedMessage($event)" ></child>
+<child #child [data]="data" title="child-2" (sendMessage)="receivedMessage($event)" ></child>
+<p>----------data tranfer technique (template reference variable)----------</p>
+<p>received from child - 1:{{child_one_message}}</p>
+<p>received from child - 1:{{child_two_message}}</p>
