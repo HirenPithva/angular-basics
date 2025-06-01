@@ -1,3 +1,3 @@
 <p>two-way-binding-technique: {{email}}</p>
 
-<input type="email" [(ngModel)]="email" >
+<input type="email"  (input)="onEmailEnter($event)" [(ngModel)]="email" >
