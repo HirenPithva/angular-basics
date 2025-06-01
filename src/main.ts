@@ -4,13 +4,14 @@ import {bootstrapApplication} from '@angular/platform-browser';
 import { TwoWayBindingTechnique } from './two-way-binding/two-way-binding-technique/two-way-binding-technique';
 import { ComponentDirective } from './directive/component-directive/component-directive';
 import { Parent } from './data-tranfer/parent/parent';
+import { ChangeDetectionCycle } from './change-detection/change-detection-cycle/change-detection-cycle';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   template: "",
   templateUrl:"app.template.html",
-  imports:[TwoWayBindingTechnique, Parent,ComponentDirective]
+  imports:[TwoWayBindingTechnique, Parent,ChangeDetectionCycle,ComponentDirective]
 })
 export class App {
   name = 'Angular';
