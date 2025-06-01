@@ -10,7 +10,6 @@ export class MaskDirective implements OnInit, OnChanges{
     value!: string;
     ngOnInit(): void {
         this.value = this.el.nativeElement.value;
-        console.log("formate:", this.formate)
         if(this.formate && this.value){
             this.maskValue(this.value);
         }
@@ -19,7 +18,6 @@ export class MaskDirective implements OnInit, OnChanges{
 
     ngOnChanges(changes: SimpleChanges): void {
         this.value = this.el.nativeElement.value;
-        console.log("formate:", this.formate, "   val: ", this.value)
 
         if(this.formate && this.value){
             this.maskValue(this.value);
@@ -29,7 +27,6 @@ export class MaskDirective implements OnInit, OnChanges{
     @HostListener('input', ['$event'] )
     onInput(event: Event){
         this.value = (event?.target as HTMLInputElement).value;
-        console.log("formate:", this.formate, "    this.value",this.value)
 
         if(this.formate && this.value){
             this.maskValue(this.value);
@@ -38,7 +35,6 @@ export class MaskDirective implements OnInit, OnChanges{
 
     maskValue(val: string){
         val = val.replace(/\D/g,'');
-        console.log("filtered val:", val)
         const iEndFormate = this.formate.length;
         const iEndVal = val.length;
         let itr = 0;
@@ -55,9 +51,7 @@ export class MaskDirective implements OnInit, OnChanges{
                 formatedVal += this.formate[itrFormate];
             }
             itrFormate++;
-            console.log( "formatedVal:", formatedVal)
         }
-        console.log("formatedVal:",formatedVal);
        // this.rendrer.setProperty(this.el, 'value',formatedVal )
         this.el.nativeElement.value = formatedVal;
     }
