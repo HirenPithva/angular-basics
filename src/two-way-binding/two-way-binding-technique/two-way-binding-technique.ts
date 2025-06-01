@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { JUNCTION_SERVICE, junctionService } from '../../service/junction.service';
 
 @Component({
   selector: 'two-way-binding-technique',
@@ -8,5 +9,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './two-way-binding-technique.css'
 })
 export class TwoWayBindingTechnique {
+
+  constructor(@Inject(JUNCTION_SERVICE) private junction: junctionService){}
+
   email!: string;
+  onEmailEnter(event: Event){
+    this.junction.onSendMessage.emit((event.target as HTMLInputElement).value);
+  }
 }
