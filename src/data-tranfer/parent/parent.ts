@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, Inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Child } from './child/child';
 import { FormsModule } from '@angular/forms';
-import { JUNCTION_SERVICE, junctionService } from '../../service/junction.service';
+import { JUNCTION_SERVICE, junctionService } from '../../common/service/junction.service';
 
 @Component({
   selector: 'parent',

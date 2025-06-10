@@ -1,0 +1,20 @@
+<form #templateForm ='ngForm'>
+    <p>firstName</p>
+    <input type="text" maxlength="50" (blur)="onBlurControl(USERREGISTER_CONSTANT['FIRSTNAME'])" ngModel required [name] = "USERREGISTER_CONSTANT['FIRSTNAME']" />
+    <span style="color: brown;" *ngIf="errorObject[USERREGISTER_CONSTANT['FIRSTNAME']]?.visible" > {{getError(USERREGISTER_CONSTANT['FIRSTNAME'])}}</span>
+
+    <p>lastName</p>
+    <input required type="text" maxlength="50" (blur)="onBlurControl(USERREGISTER_CONSTANT['LASTNAME'])" ngModel [name] = "USERREGISTER_CONSTANT['LASTNAME']" />
+    <span style="color: brown;" *ngIf="errorObject[USERREGISTER_CONSTANT['LASTNAME']]?.visible" > {{getError(USERREGISTER_CONSTANT['LASTNAME'])}}</span>
+
+    <p>email</p>
+    <input emailValidation required type="email" (blur)="onBlurControl(USERREGISTER_CONSTANT['EMAIL'])" maxlength="100" ngModel [name] = "USERREGISTER_CONSTANT['EMAIL']" />
+    <span style="color: brown;" *ngIf="errorObject[USERREGISTER_CONSTANT['EMAIL']]?.visible" > {{getError(USERREGISTER_CONSTANT['EMAIL'])}}</span>
+
+    <p>password</p>
+    <input passwordValidation required type="password" (blur)="onBlurControl(USERREGISTER_CONSTANT['PASSWORD'])" maxlength="100" ngModel [name] = "USERREGISTER_CONSTANT['PASSWORD']" />
+    <span style="color: brown;" *ngIf="errorObject[USERREGISTER_CONSTANT['PASSWORD']]?.visible" > {{getError(USERREGISTER_CONSTANT['PASSWORD'])}}</span>
+    
+    <br/>
+    <button (click)="onSave()">SAVE</button>
+</form>
