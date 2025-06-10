@@ -6,20 +6,23 @@ import { ComponentDirective } from './directive/component-directive/component-di
 import { Parent } from './data-tranfer/parent/parent';
 import { ChangeDetectionCycle } from './change-detection/change-detection-cycle/change-detection-cycle';
 import { RootComponent } from './view-encapsulation/root-component/root-component';
-import { JUNCTION_SERVICE, junctionService } from './service/junction.service';
+import { JUNCTION_SERVICE, junctionService } from './common/service/junction.service';
+import { RegisterComponent } from "./component/account/register-component/register.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   template: "",
   templateUrl:"app.template.html",
-  imports:[
-    TwoWayBindingTechnique, 
+  imports: [
+    TwoWayBindingTechnique,
     Parent,
-    ChangeDetectionCycle, 
+    ChangeDetectionCycle,
     RootComponent,
-    ComponentDirective
-  ]
+    RegisterComponent,
+    ComponentDirective,
+    RegisterComponent
+]
 })
 export class App {
   name = 'Angular';

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { JUNCTION_SERVICE, junctionService } from '../../service/junction.service';
+import { JUNCTION_SERVICE, junctionService } from '../../common/service/junction.service';
 
 @Component({
   selector: 'two-way-binding-technique',
