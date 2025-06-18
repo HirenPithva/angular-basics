@@ -10,10 +10,18 @@ import { RouterModule } from '@angular/router';
 })
 export class Layout {
   isformClick: boolean = false;
+  isRxjsClick: boolean = false;
+  isRxjsTransformationClick: boolean = false;
+
   formClicked =  ()=>{
     this.isformClick = !this.isformClick;
   }
-
+  rxjsClicked = ()=>{
+    this.isRxjsClick = !this.isRxjsClick;
+  }
+  rxjsTransformationClicked = ()=>{
+    this.isRxjsTransformationClick = !this.isRxjsTransformationClick;
+  }
   temp(){
     console.log("mouse enter")
   }

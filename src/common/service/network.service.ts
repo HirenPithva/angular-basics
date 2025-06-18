@@ -8,9 +8,30 @@ export const network_token = new InjectionToken<NetworkService>("network")
 export class NetworkService{
     private httpClient = inject(HttpClient);
 
-    get<T>(url:string, params: 
+    
+    testGet<T>(url:string, params?: 
         Record<string, string> | null, 
-        heaers: Record<string, string>| null):Observable<T>{
+        heaers?: Record<string, string>| null):Observable<T>{
+        
+        let httpParams = new HttpParams()
+        params && Object.keys(params).forEach(paramsKey => {    
+            httpParams.append(paramsKey, params[paramsKey]);
+        })
+
+        let httpHeader = new HttpHeaders()
+        heaers && Object.keys(heaers).forEach(headerKey => {    
+            httpHeader.append(headerKey, heaers[headerKey]);
+        })
+
+        return this.httpClient.get<T>(url, {
+            params : httpParams,
+            headers : httpHeader
+        })
+    }
+
+    get<T>(url:string, params?: 
+        Record<string, string> | null, 
+        heaers?: Record<string, string>| null):Observable<T>{
         
         let httpParams = new HttpParams()
         params && Object.keys(params).forEach(paramsKey => {    
