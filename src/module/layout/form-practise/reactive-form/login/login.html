@@ -1,0 +1,12 @@
+<form [formGroup]="formGrp" (submit)="onSubmit()" >
+    <div>
+        <p>User name</p>
+        <input type="text" [formControlName]="'userName'" >
+    </div>
+    <div>
+        <p>Password</p>
+        <input type="text" [formControlName]="'password'"  >
+    </div>
+
+    <button type="submit">Login</button>
+</form>

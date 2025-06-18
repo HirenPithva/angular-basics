@@ -14,7 +14,21 @@
               "extractLicenses": false,
               "namedChunks": true,
               "optimization": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+               {
+                "replace": "src/environment/environment.ts",
+                "with": "src/environment/environment.development.ts"
+               } 
+              ]
+            },
+            "staging":{
+              "fileReplacements": [
+                {
+                  "replace": "src/environment/environment.ts",
+                  "with": "src/environment/environment.staging.ts"
+                }
+              ]
             },
             "production": {
               "aot": true,
@@ -41,6 +55,9 @@
           "configurations": {
             "development": {
               "buildTarget": "demo:build:development"
+            },
+            "staging":{
+              "buildTarget": "demo:build:staging"
             },
             "production": {
               "buildTarget": "demo:build:production"

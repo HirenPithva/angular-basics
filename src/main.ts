@@ -1,13 +1,16 @@
 import 'zone.js';
 import {ApplicationConfig, Component} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
-import { TwoWayBindingTechnique } from './two-way-binding/two-way-binding-technique/two-way-binding-technique';
-import { ComponentDirective } from './directive/component-directive/component-directive';
-import { Parent } from './data-tranfer/parent/parent';
-import { ChangeDetectionCycle } from './change-detection/change-detection-cycle/change-detection-cycle';
-import { RootComponent } from './view-encapsulation/root-component/root-component';
+// import { TwoWayBindingTechnique } from './two-way-binding/two-way-binding-technique/two-way-binding-technique';
+// import { ComponentDirective } from './module/layout/directive-practise/component-directive/component-directive';
+// import { Parent } from './data-tranfer/parent/parent';
+// import { ChangeDetectionCycle } from './change-detection/change-detection-cycle/change-detection-cycle';
+// import { RootComponent } from './view-encapsulation/root-component/root-component';
 import { JUNCTION_SERVICE, junctionService } from './common/service/junction.service';
-import { RegisterComponent } from "./component/account/register-component/register.component";
+import { network_token, NetworkService } from './common/service/network.service';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideRouter, RouterModule } from '@angular/router';
+import { routes } from './route';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +18,14 @@ import { RegisterComponent } from "./component/account/register-component/regist
   template: "",
   templateUrl:"app.template.html",
   imports: [
-    TwoWayBindingTechnique,
-    Parent,
-    ChangeDetectionCycle,
-    RootComponent,
-    RegisterComponent,
-    ComponentDirective,
-    RegisterComponent
+    RouterModule,
+    // TwoWayBindingTechnique,
+    // Parent,
+    // ChangeDetectionCycle,
+    // RootComponent,
+    // RegisterComponent,
+    // ComponentDirective,
+    // RegisterComponent
 ]
 })
 export class App {
@@ -33,4 +37,11 @@ export class App {
 }
 
 // bootstrapApplication(App,{providers: [{provide: junctionService, useClass: junctionService }]});
-bootstrapApplication(App,{providers: [{provide: JUNCTION_SERVICE, useClass: junctionService }]});
+bootstrapApplication(App,
+  {providers: [
+    {provide: JUNCTION_SERVICE, useClass: junctionService },
+    {provide: network_token, useClass: NetworkService},
+    provideHttpClient(),
+    provideRouter(routes)
+  ]
+});

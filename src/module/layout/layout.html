@@ -1,0 +1,31 @@
+<div>
+    <!-- navbar -->
+    <nav style="width: auto;">
+        navbar
+    </nav>
+    <div style="display: flex; flex-direction: row;">
+        <!-- sidebar -->
+        <div style="flex-shrink: 1;" >
+            <ul>
+                <li><a routerLink="">data bindig</a></li>
+                <li><a routerLink="directive">directive</a></li>
+                <li><a routerLink="data-transfer">data transfer</a></li>
+                <li><a routerLink="view-encapsulation">view encapsulation</a></li>
+                <li>
+                    <div (click)="formClicked()" >form</div>
+                    <ng-container *ngIf="isformClick">
+                        <ul>
+                            <li><a routerLink="form/template-driven-form">template driven form</a></li>
+                            <li><a routerLink="form/reactive-form">reactive form</a></li>
+                        </ul>
+                    </ng-container>
+                </li>
+                <li><a routerLink="service-data-tranfer">data transfer with any component</a></li>
+            </ul>
+        </div>
+        <!-- chid component window -->
+        <div style="flex-grow: 1;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
