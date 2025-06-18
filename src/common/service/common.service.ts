@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { ErrorMessage, IFormControlName, ValidationErrorMessage } from "../common.model";
+import { FormGroup, NgForm } from "@angular/forms";
+import { ErrorMessage, IFormControlName, ValidationErrorMessage } from "../models/common.model";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "root",
 })
 
 export class CommonService{
@@ -14,6 +14,62 @@ export class CommonService{
         return true;
     }
 
+        
+    static async hasFormChangedObj( currentFormState: FormGroup, initialVal: object, showDiscardChanges:boolean, showNoChanges:boolean):Promise<boolean>{
+        const currentVal = currentFormState.getRawValue();
+        const currentStateStr = JSON.stringify( this.convertToArr(currentVal));
+        const initialStateStr = JSON.stringify( this.convertToArr(initialVal));
+        console.log("Currnet state", currentStateStr)
+        console.log("initial state", initialStateStr)
+        if(currentStateStr !== initialStateStr && currentFormState.dirty ){
+        if (showDiscardChanges) {
+            const result = confirm("Changes detected. Do you want to leave the page and discard the changes")
+            // const result = await this.dialogRef.open(ConfirmDialogComponent,{ 
+            //   width: '577px',
+            //   data:{
+            //     title: SystemConst.LEAVING_PAGE,
+            //     message: SystemConst.LEAVING_PAGE_WITHOUT_SAVING
+            //   }
+            // })
+            //   .afterClosed()
+            //   .toPromise();
+            return result === true;
+        } else {
+            return true;
+        }
+        }
+        else{
+        if (showNoChanges) {
+            if(currentFormState.valid){
+                alert("No changes detected!");
+            //   this.snackbarService.warning(SystemConst.NO_CHANGE_DETECT);
+            return false;
+            }
+            else{
+            currentFormState.markAllAsTouched()
+            return false;
+            }
+        }
+        if (!showNoChanges) {
+            return true;
+        }
+        }
+        return false;
+    }
+  
+    static convertToArr(obj: Record<string, any>):any[]{
+        const arr:any[] = [];
+        const normalizeValue = (value: any) => value === null || value === '' || value === undefined ? '' : String(value);
+
+        Object.keys(obj).map((key: string) => {
+        if(obj[key] != null && typeof(obj[key]) == "object"){
+            //will add result to main string
+            arr.push(this.convertToArr(obj[key]));
+        }
+        arr.push([key, normalizeValue(obj[key])]);
+        })
+        return arr;
+    }
     
     static matchError(errorKey: string, fieldName: string):string{
         switch (errorKey) {
