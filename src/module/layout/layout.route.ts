@@ -24,6 +24,10 @@ export const routes : Routes = [
             {
                 path: "service-data-tranfer",
                 loadComponent: ()=> import("./data-transfer-with-service-practise/two-way-binding-technique/two-way-binding-technique").then((arg)=>arg.TwoWayBindingTechnique)
+            },
+            {
+                path: "rxjs",
+                loadChildren: ()=> import("./rxjs-practise/rxjs-practise.routes").then((r)=> r.routes)
             }
         ]
     }
