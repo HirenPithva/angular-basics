@@ -8,6 +8,10 @@ export const routes: Routes = [
             {
                 path: "transformation",
                 loadChildren: ()=> import("./transformation-operators/transformation-operators.routes").then((r)=> r.routes)
+            },
+            {
+                path: "creational",
+                loadComponent: ()=> import("./async-creational-opeartor/async-creational-opeartor").then((c)=> c.AsyncCreationalOpeartor)
             }
         ]
     }
