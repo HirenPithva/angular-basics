@@ -1,0 +1,32 @@
+<p>switch-concate-merge-exhust-operator!</p>
+<div>
+    <label>country</label>
+    <input #country />
+</div>
+<div>
+    <label>state</label>
+    <input #state />
+</div>
+<div style="display: flex; flex-direction:column;">
+    <button (click)="switchOperator('CombineLatest')" style="padding: 10px; margin: 10px;">combine latest</button>
+    <button (click)="switchOperator('zip')" style="padding: 10px; margin: 10px;">zip</button>
+    <ng-container *ngIf="isCombineLatest">
+        <div style="padding: 15px;">
+            <p>Combine latest output</p>
+            <pre>{{combineLatestData | json}}</pre>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="iszip">
+        <div style="padding: 15px;">
+            <p>zip output</p>
+            <pre>{{zipData | json}}</pre>
+        </div>
+    </ng-container>
+
+    <div style="padding: 10px; margin: 10px;">
+        <h3>Result</h3>
+        <pre>{{result | json}}</pre>
+    </div>
+    
+</div>

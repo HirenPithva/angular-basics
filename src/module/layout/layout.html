@@ -37,6 +37,15 @@
                         <ul>
                             <li><a routerLink="rxjs/creational">creational</a></li>
                         </ul>
+                        <ul>
+                            <div (click)="rxjsCombinationalClicked()" >Combinational operator</div>
+                            <ng-container *ngIf="isRxjsCombinationalClick">
+                                <ul>
+                                    <li><a routerLink="rxjs/conbinational/merge-concat">merge - concat</a></li>
+                                    <li><a routerLink="rxjs/conbinational/combine-result">combine result</a></li>
+                                </ul>
+                            </ng-container>
+                        </ul>
                     </ng-container>
                 </li>
                 <li><a routerLink="service-data-tranfer">data transfer with any component</a></li>

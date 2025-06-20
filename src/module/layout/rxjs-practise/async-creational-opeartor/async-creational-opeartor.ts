@@ -24,6 +24,6 @@ export class AsyncCreationalOpeartor implements OnInit{
       console.log("of data",data);
       this.fromResult.push(data);
 
-    })
+    }) 
   }
 }
