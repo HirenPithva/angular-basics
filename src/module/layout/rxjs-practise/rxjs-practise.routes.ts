@@ -13,6 +13,11 @@ export const routes: Routes = [
                 path: "creational",
                 loadComponent: ()=> import("./async-creational-opeartor/async-creational-opeartor").then((c)=> c.AsyncCreationalOpeartor)
             }
+            ,
+            {
+                path: "conbinational",
+                loadChildren: ()=> import("./combinational-operator/combinational-operator.routes").then((r)=> r.routes)
+            }
         ]
     }
 ]

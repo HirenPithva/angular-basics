@@ -12,6 +12,7 @@ export class Layout {
   isformClick: boolean = false;
   isRxjsClick: boolean = false;
   isRxjsTransformationClick: boolean = false;
+  isRxjsCombinationalClick:boolean = false;
 
   formClicked =  ()=>{
     this.isformClick = !this.isformClick;
@@ -21,6 +22,9 @@ export class Layout {
   }
   rxjsTransformationClicked = ()=>{
     this.isRxjsTransformationClick = !this.isRxjsTransformationClick;
+  }
+  rxjsCombinationalClicked = ()=>{
+    this.isRxjsCombinationalClick = !this.isRxjsCombinationalClick;
   }
   temp(){
     console.log("mouse enter")
