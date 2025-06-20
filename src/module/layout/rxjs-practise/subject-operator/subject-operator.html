@@ -1,0 +1,52 @@
+<p>subject-operator works!</p>
+<button #emitElement style="padding: 10px; margin: 10px;">zip</button>
+
+<button (click)="secondSubscribe()" style="padding: 10px; margin: 10px;">Second subscribe</button>
+
+<div style="display: flex; flex-direction:column;">
+    <div>
+        <p>Subject output</p>
+
+        <div style="padding: 15px;">
+            <pre>{{subData | json}}</pre>
+        </div>
+        <div style="padding: 15px;">
+            <pre>{{subDataSecond | json}}</pre>
+        </div>
+    </div>
+
+    <div>
+        <p>behaviour Subject output</p>
+
+        <div style="padding: 15px;">
+            <pre>{{behaviorSubjectData | json}}</pre>
+        </div>
+        <div style="padding: 15px;">
+            <pre>{{behaviorSubjectDataSecond | json}}</pre>
+        </div>
+    </div>
+
+    <div>
+        <p>Replay Subject output, buffer size:3</p>
+
+        <div style="padding: 15px;">
+            <pre>{{replaySubjectData | json}}</pre>
+        </div>
+        <div style="padding: 15px;">
+            <pre>{{replaySubjectDataSecond | json}}</pre>
+        </div>
+    </div>
+
+    <div>
+        <p>Async Subject output</p>
+        <button (click)="completeAsync()" style="padding: 10px; margin: 10px;">Complete async</button>
+
+
+        <div style="padding: 15px;">
+            <pre>{{asyncSubjectData | json}}</pre>
+        </div>
+        <div style="padding: 15px;">
+            <pre>{{asyncSubjectDataSecond | json}}</pre>
+        </div>
+    </div>
+</div>
