@@ -17,6 +17,10 @@ export const routes: Routes = [
             {
                 path: "conbinational",
                 loadChildren: ()=> import("./combinational-operator/combinational-operator.routes").then((r)=> r.routes)
+            },
+            {
+                path: "subject",
+                loadComponent: ()=> import("./subject-operator/subject-operator").then((c)=> c.SubjectOperator)
             }
         ]
     }
