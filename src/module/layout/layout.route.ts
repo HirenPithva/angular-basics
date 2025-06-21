@@ -28,6 +28,10 @@ export const routes : Routes = [
             {
                 path: "rxjs",
                 loadChildren: ()=> import("./rxjs-practise/rxjs-practise.routes").then((r)=> r.routes)
+            },
+            {
+                path: "interceptor",
+                loadComponent: ()=> import("./interceptor-practise/interceptor-practise").then((c)=> c.InterceptorPractise)
             }
         ]
     }
