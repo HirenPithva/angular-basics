@@ -8,9 +8,10 @@ import {bootstrapApplication} from '@angular/platform-browser';
 // import { RootComponent } from './view-encapsulation/root-component/root-component';
 import { JUNCTION_SERVICE, junctionService } from './common/service/junction.service';
 import { network_token, NetworkService } from './common/service/network.service';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideRouter, RouterModule } from '@angular/router';
 import { routes } from './route';
+import {  tokenInterceptorFn } from './common/service/token.interceptor';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,8 @@ bootstrapApplication(App,
   {providers: [
     {provide: JUNCTION_SERVICE, useClass: junctionService },
     {provide: network_token, useClass: NetworkService},
-    provideHttpClient(),
+    // {provide: HTTP_INTERCEPTORS, useClass: tokenInterceptor, multi: true},
+    provideHttpClient(withInterceptors([tokenInterceptorFn])),
     provideRouter(routes)
   ]
 });
